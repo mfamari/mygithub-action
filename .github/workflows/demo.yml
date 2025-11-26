@@ -1,0 +1,29 @@
+name : Demo pipeline
+
+on:
+    push:
+        branches:
+            -main
+            -dev
+    pull_request:
+        branches: [main,dev] 
+    schedule:
+        - cron: "*/1 * * * *"
+
+jobs:  
+    setup_job:
+        runs-on: ubuntu-latest 
+        steps:
+            - name: create file
+              run: print hello world
+            
+    build_job:
+        runs-on: windows-lates
+        steps:
+            - name: create file
+              run: print hello world
+
+    deploy_job:
+         runs-on: macos-lates 
+        steps:
+            -  run: echo hello word
